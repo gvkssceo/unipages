@@ -1,0 +1,3 @@
+This is a placeholder for your Unipages logo.
+
+To use your own logo, place a file named 'logo.png' in this directory. 
