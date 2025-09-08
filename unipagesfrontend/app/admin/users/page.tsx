@@ -227,10 +227,14 @@ function UsersContent() {
           const usersData = await usersResponse.value.json();
           setUsers(usersData);
         } catch (error) {
-          console.error('Error parsing users data:', error);
+          if ((error as any)?.name !== 'AbortError') {
+            console.error('Error parsing users data:', error);
+          }
         }
       } else if (usersResponse.status === 'rejected') {
-        console.error('Users request failed:', usersResponse.reason);
+        if ((usersResponse as PromiseRejectedResult).reason?.name !== 'AbortError') {
+          console.error('Users request failed:', usersResponse.reason);
+        }
       }
 
       // Process roles response
@@ -239,10 +243,14 @@ function UsersContent() {
           const rolesData = await rolesResponse.value.json();
           setRoles(rolesData);
         } catch (error) {
-          console.error('Error parsing roles data:', error);
+          if ((error as any)?.name !== 'AbortError') {
+            console.error('Error parsing roles data:', error);
+          }
         }
       } else if (rolesResponse.status === 'rejected') {
-        console.error('Roles request failed:', rolesResponse.reason);
+        if ((rolesResponse as PromiseRejectedResult).reason?.name !== 'AbortError') {
+          console.error('Roles request failed:', rolesResponse.reason);
+        }
       }
 
       // Process profiles response
@@ -251,10 +259,14 @@ function UsersContent() {
           const profilesData = await profilesResponse.value.json();
           setProfiles(profilesData);
         } catch (error) {
-          console.error('Error parsing profiles data:', error);
+          if ((error as any)?.name !== 'AbortError') {
+            console.error('Error parsing profiles data:', error);
+          }
         }
       } else if (profilesResponse.status === 'rejected') {
-        console.error('Profiles request failed:', profilesResponse.reason);
+        if ((profilesResponse as PromiseRejectedResult).reason?.name !== 'AbortError') {
+          console.error('Profiles request failed:', profilesResponse.reason);
+        }
       }
 
       // Process permission sets response
@@ -263,10 +275,14 @@ function UsersContent() {
           const permissionSetsData = await permissionSetsResponse.value.json();
           setPermissionSets(permissionSetsData);
         } catch (error) {
-          console.error('Error parsing permission sets data:', error);
+          if ((error as any)?.name !== 'AbortError') {
+            console.error('Error parsing permission sets data:', error);
+          }
         }
       } else if (permissionSetsResponse.status === 'rejected') {
-        console.error('Permission sets request failed:', permissionSetsResponse.reason);
+        if ((permissionSetsResponse as PromiseRejectedResult).reason?.name !== 'AbortError') {
+          console.error('Permission sets request failed:', permissionSetsResponse.reason);
+        }
       }
 
       setLastUpdated(new Date());
